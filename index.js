@@ -83,6 +83,15 @@ let number = 7;
 
 let check_number = (number % 2) === 0 ? 'Число чётное' : 'Число не чётное';
 
-console.log( number, check_number);
+console.log(number, check_number);
 
+// массивы и цикл for of
+
+let fruits = ['Яблоко', 'Банан', 'Апельсин', 'Ананас', 'Дыня'];
+
+console.log('Сегодня я съел:');
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}
 
