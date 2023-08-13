@@ -24,7 +24,7 @@ for(let i = str.length - 1; i >= 0; i--){
 return text;
 };
 
-console.log(reverse('Арбуз'));
+console.log(reverse('Лето'));
 
 // задача о boolean, массивах и циклах
 
@@ -46,35 +46,12 @@ for (let i = 0; i < roadMines.length; i++) {
     };
 };
 
-// Календарь 
-
-// let month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
-// let day = ['понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье']; // 0 - 6
-// let number = 0; 
-
-
-
-// for (number of month) {
-//     if (number <= month.length, number++) {
-//         k = 0, k >= day.length, k++;
-//         number = month[0] + 1;
-//         console.log(`${number} января, ${day[i]}`); 
-        
-//     };
-// };
-
-
-// вывод в консоль:
-// 1 января, вторник
-// 2 января, среда
-
-
 //перемешивание массива чисел и  поиск индекса (порядкового номера) нужного элемента в массиве.
 
 let arr = [];
 let countt = 5;
 let g, temp;
-let k = 2;
+let k = 3;
 
 for (let j = 1; j <= countt; j++) {
     arr.push(j);
@@ -97,3 +74,66 @@ if (k <= countt) {
 
 // Научиться обрабатывать массивы одним циклом
 
+let arr1 = [2, 2, 17, 21, 45, 12, 54, 31, 53];
+let arr2 = [12, 44, 23, 5];
+
+arr1.push(... arr2);
+
+console.log(arr1);
+
+// 5 modul
+// вывод количества лет от текущей даты
+
+function getAge(age) {
+    let currentDate = new Date();
+    let currentYear = currentDate.getFullYear();
+
+    return currentYear - age;
+}
+
+console.log(getAge('2000'));
+
+
+// создание массива email-адресов, не попавших в чёрный список
+
+let whiteList = ['my-email@gmail.ru', 'jsfunc@mail.ru', 'annavkmail@vk.ru', 'fullname@skill.ru', 'goodday@day.ru'];
+let blackList = ['jsfunc@mail.ru','goodday@day.ru'];
+
+function filter(whiteList, blackList) {
+    let filterlist = [];
+
+    for (let f = 0; f < whiteList.length; f++) {
+        if (!blackList.includes(whiteList[f])) {
+            filterlist.push(whiteList[f]);
+        };
+    };
+    return filterlist;
+};
+
+let newlist = filter(whiteList, blackList);
+
+console.log(newlist);
+
+// отсортированный массив через функцию
+
+let arrS = [12, 31, 3, 45, 100];
+
+function arrSort(arrS, func) {
+    let result = [...arrS];
+
+    for (q = 0; q < result.length; q++) {
+        for (let y = 0; y < result.length - 1; y++) {
+            if (func(result[y], result[y + 1])) {
+                let tem = result[y];
+                result[y] = result[y + 1];
+                result[y + 1] = tem;
+            };
+        };
+    };
+    return result;
+};
+
+console.log('До', arrS)
+console.log('После', arrSort(arrS, function(A, B){
+    return A > B;
+}));
