@@ -137,3 +137,95 @@ console.log('До', arrS)
 console.log('После', arrSort(arrS, function(A, B){
     return A > B;
 }));
+
+// 6 modul 
+// Вычисление старшего пользователя 
+
+let user1 = {
+    name: 'Игорь',
+    age: 17
+};
+
+let user2 = {
+    name: 'Оля',
+    age: 21
+};
+
+let user3 = {
+    name: 'Глаша',
+    age: 15
+};
+     
+// let min = Math.min(user1.age, user2.age, user3.age);  //17
+let max = Math.max(user1.age, user2.age, user3.age); //21
+      
+function getOlderUser(user1, user2, user3) {
+
+    if (user1.age == max) {
+        return user1.name
+    }; 
+    if (user2.age == max) {
+        return user2.name
+    } else (user3.age == max) 
+        return user3.name
+};       
+
+let res = getOlderUser(user1, user2, user3);
+
+console.log(max, res);
+
+// Вычисление младшего пользователя 
+
+let allUsers = [
+    {name: 'Валя', ag: 11},
+    {name: 'Таня', ag: 24},
+    {name: 'Рома', ag: 21},
+    {name: 'Надя', ag: 34},
+    {name: 'Антон', ag: 7}
+];
+
+let min = Math.min(...allUsers.map(item => item.ag));
+  
+function getOlderUserArray() {
+    let YoungUser = [];
+    let copy = [... allUsers];
+
+    for (user of copy) {
+        if (user.ag == min) {
+            YoungUser.push(user);
+        };
+    };
+    return YoungUser; 
+};
+
+let resul = getOlderUserArray(allUsers);
+
+console.log(resul);
+
+// Фильтрация массива объектов по значению свойства
+
+let objects = [
+    { name: 'Василий', surname: 'Васильев' },
+    { name: 'Иван', surname: 'Иванов' },
+    { name: 'Пётр', surname: 'Петров' },
+    { name: 'Иван', surname: 'Васильев' },
+    { name: 'Иван', surname: 'Петров' },
+    { name: 'Василий', surname: 'Иванов' },
+];
+
+// item = object.name
+function filterObjects(item) {
+    let filterName = [];
+    let copyObject = [...objects];
+
+    for (item of copyObject) {
+        if (item.name.includes('Иван')) {
+            filterName.push(item);
+        };
+    };
+    return filterName;
+};
+
+let results = filterObjects(objects, 'name', 'Иван');
+
+console.log(results);
