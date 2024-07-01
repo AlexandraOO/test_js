@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> TITLE</title>
+	</head>
+	<body>
+    
+   <p>
+    Дана кнопка. 
+    Сделайте так, чтобы эта кнопка считала количество кликов по ней, записывая их в какой-нибудь пользовательский атрибут. 
+    Пусть по клику на другую кнопку на экран выводится, сколько кликов было сделано по первой кнопке.
+  </p> 
+<button data-myat = "0"> Push </button>
+<button id = "button" > 0 </button>
+
+<p>
+  В этом инпуте в атрибуте data-length содержится количество символов, которое нужно ввести в инпут. 
+  Сделайте так, чтобы по потери фокуса, если количество введенных символов не совпадает с заданным, выводилось сообщение об этом.
+</p>
+
+<input id="elem" data-length="5">
+
+<p>
+  В этом инпуте атрибуты data-min и data-max содержат диапазон. Сделайте так, чтобы по потери фокуса,
+  если количество введенных символов не попадает в этот диапазон, выводилось сообщение об этом.
+</p>
+
+<input id="elem2" data-min = "5" data-max = "10">
+		
+<p> 
+  Сделайте так, чтобы по клику на див в конец его текста добавлялась стоимость покупки, равная цене, умноженной на количество.
+</p>
+  
+<div id = "elem3" data-product-price="1000" data-product-amount="5">
+	товар яблоки
+</div>
+
+<p> Даны абзацы. Переберите их циклом и каждому абзацу в атрибут data-num запишите порядковый номер этого абзаца. Используйте метод setAttribute. </p>
+
+<p class = "text" > text </p>
+<p class = "text" > text </p>
+<p class = "text" > text </p>
+
+		<script>
+		
+    let btn = document.querySelector('button');
+   let btn2 = document.querySelector('#button');
+   let result = document.querySelector('#elem');
+   let input = document.getElementById('elem2');
+   let price = document.getElementById('elem3');   
+   let texts = document.querySelectorAll('.text');
+   
+   function func() {
+    return function() {
+      return btn.dataset.myat++, 
+             btn2.textContent++;
+  }};
+    
+   btn.addEventListener('click', func());
+   
+   result.addEventListener('blur', function() {
+     console.log(result.value)
+
+    if (result.value.length == result.dataset.length) {
+      console.log('string length = data-length')
+    } else {
+      console.log('string length != data-length')
+    }
+   });
+
+   input.addEventListener('blur', function(){
+    if (input.value.length >= input.dataset.min && input.value.length <= input.dataset.max) {
+      console.log('All right!')
+    } else {
+      console.log('False')
+    }
+   });
+
+   price.addEventListener('click', function() {
+    price.textContent = price.textContent + (price.dataset.productPrice * price.dataset.productAmount); 
+   });
+
+
+  for (let i = 0; i < texts.length; i++) {
+    let numberP = texts[i].setAttribute('data-num', (i + 1));
+  };
+
+
+		</script>
+	</body>
+</html>

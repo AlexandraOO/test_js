@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   1 Даны инпуты. Переберите эти инпуты циклом и создайте коллекцию Map, ключами в которой будут инпуты, а значением - их порядковый номер на странице. Сделайте так, чтобы по клику на любой инпут ему в value записывался его порядковый номер.
+   2 Даны инпуты. В каждый инпут можно ввести число. Пусть по нажатию на Enter инпут запоминает введенное число. Сделайте так, чтобы по потери фокуса в инпуте в консоль выводился массив всех введенных ранее в инпут чисел.
+
+    <input>
+    <input>
+    <input>
+    <input>
+    <input>
+
+    <script>
+//1 Даны инпуты. Переберите эти инпуты циклом и создайте коллекцию Map, ключами в которой будут инпуты, а значением - их порядковый номер на странице. Сделайте так, чтобы по клику на любой инпут ему в value записывался его порядковый номер.
+
+;(function(){
+    let elems = document.querySelectorAll('input');
+
+let map = new Map;
+
+let i = 1;
+for (let elem of elems) {
+	map.set(elem, i++);
+  	elem.addEventListener('click', function() {
+		this.value += map.get(this);
+	});
+};
+})();
+
+// 2 Даны инпуты. В каждый инпут можно ввести число. Пусть по нажатию на Enter инпут запоминает введенное число. Сделайте так, чтобы по потери фокуса в инпуте в консоль выводился массив всех введенных ранее в инпут чисел.
+
+;(function(){
+    
+    let inps = document.querySelectorAll('input')
+let map = new Map();
+
+let index = 0;
+for(let inp of inps) {
+  input.addEventListener('keydown', function(event) {   
+     if (event.code !== 'Enter' && event.code !== 'NumpadEnter' ) return; 
+     map.set(index, this.value);
+     index++;
+     this.value = '';                    
+  });
+  inp.addEventListener('blur', function() {
+    console.log( [...map.values()] );
+  });
+}
+
+
+})();
+
+    </script>
+</body>
+</html>

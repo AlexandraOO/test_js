@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> TITLE</title>
+
+	</head>
+	<body>
+
+<p> Пусть в него разрешено ввести 5 символов. Дан также абзац. 
+    По мере ввода символов в инпут пишите, сколько еще символов можно ввести. Когда количество символов превысит 5-ти, 
+    то в абзац выводите то, на сколько символов превышена длина текста.</p>
+
+        <input id="elem">
+        <p> </p>
+
+        <script>
+
+     let elem = document.querySelector('#elem');
+     let simbol = document.querySelector('p');
+    
+     simbol.textContent = 'Осталось ввести 5 символов';
+             
+        elem.addEventListener('input', function checkLength() {
+       
+        if (elem.value.length <= 4) {
+            console.log(elem.value.length);
+              simbol.textContent = 'Осталось ввести' + ' ' + (Math.abs(elem.value.length - 5)) + ' ' + 'символов';
+        } else if (elem.value.length > 4) {
+             simbol.textContent = 'Превышена длина текса на' + ' ' + (elem.value.length - 5) + ' ' + 'символов';
+            };
+      });
+   
+
+</script>
+	</body>
+</html>

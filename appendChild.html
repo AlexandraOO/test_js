@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    Сделайте так, чтобы по клику на кнопку в конец ol добавлялся тег li. Сделайте так, чтобы по клику на любой из добавленных li в конец его текста записывался восклицательный знак.
+    <ol id="elem"></ol>
+    <button id="button">click me</button>
+
+    Дан пустой ul. Запустите цикл, который вставит в него 10 тегов li. Сделайте так, чтобы текстом каждой li был ее порядковый номер.
+    <ul id ="elem1"></ul>
+
+
+    Дан див. Запустите цикл, который добавит в наш див 5 инпутов. 
+Пусть дан также абзац. 
+Сделайте так, чтобы каждый из новых инпутов по потери фокуса записывал свой текст в абзац.
+    <div id="parent"></div>
+    <p> </p>
+
+    Сделайте так, чтобы по каждому клику на кнопку удалялся последний элемент из #parent.
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    
+    <input type="submit" id="button2">
+
+    Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут.
+    <input id="input3">
+    <button id="button3"> CLICK </button> 
+
+
+    Сделайте функцию appendElem, которая первым параметром будет принимать ссылку на DOM объект, в котором лежит тег ul, а вторым - текст. 
+    Сделайте так, чтобы данная функция создавала новую li с переданным текстом и добавляла ее в конец переданного тега ul.
+    Дан массив и ul. С помощью функции appendElem, созданной в предыдущей задаче, запишите каждый элемент массива в отдельную li в этом ul.
+        <ul>
+        </ul>
+
+<script>
+//Сделайте так, чтобы по клику на кнопку в конец ol добавлялся тег li. Сделайте так, чтобы по клику на любой из добавленных li в конец его текста записывался восклицательный знак.
+let ol = document.querySelector('#elem');
+      let btn = document.querySelector('#button');
+      
+      btn.addEventListener('click', function(){
+      let li = document.createElement('li');
+         li.textContent = 'item';
+         ol.appendChild(li);
+     
+        li.addEventListener('click', function(){
+        this.textContent += '!';
+      });
+      });
+
+
+     // Дан пустой ul. Запустите цикл, который вставит в него 10 тегов li. Сделайте так, чтобы текстом каждой li был ее порядковый номер.
+      let ul = document.querySelector('#elem1');
+      
+      for (let i = 1; i <= 10; i++){
+        
+          let li = document.createElement('li');
+            li.textContent = i;
+        
+            ul.appendChild(li);
+      };
+      
+      //Дан див. Запустите цикл, который добавит в наш див 5 инпутов. Пусть дан также абзац. Сделайте так, чтобы каждый из новых инпутов по потери фокуса записывал свой текст в абзац.
+
+
+      let parent = document.querySelector('#parent');
+  let p = document.querySelector('p');
+      
+for (let i = 1; i <= 5; i++) {
+	let input = document.createElement('input');
+	
+	input.addEventListener('blur', function() {
+		p.textContent = this.value;
+    this.value = '';
+	});
+	
+	parent.appendChild(input);
+}
+
+// Сделайте так, чтобы по каждому клику на кнопку удалялся последний элемент из #parent.
+
+let ul2 = document.querySelector('ul');
+  let btn2 = document.querySelector('#button2');
+  let elems = ul2.getElementsByTagName("li");
+      
+	btn2.addEventListener('click', function() {
+    let last = elems[elems.length-1];
+       ul2.removeChild(last);
+	});
+
+
+//Дан инпут. Дана кнопка. По нажатию на кнопку клонируйте этот инпут.
+
+     let input = document.getElementById('input3');
+      
+     let btn3 = document.getElementById('button3');
+      
+      btn3.addEventListener('click', function(){
+        let clone = input.cloneNode(true);
+        input.insertAdjacentElement('afterEnd', clone);
+      });
+
+    //Сделайте функцию appendElem, которая первым параметром будет принимать ссылку на DOM объект, в котором лежит тег ul, а вторым - текст. 
+    //Сделайте так, чтобы данная функция создавала новую li с переданным текстом и добавляла ее в конец переданного тега ul.
+    //Дан массив и ul. С помощью функции appendElem, созданной в предыдущей задаче, запишите каждый элемент массива в отдельную li в этом ul.
+
+    function appendElem(elem, text) {
+          let parent = document.querySelector('ul');
+	          
+        for(let i = 1; i <= 5; i++){
+          let item = document.createElement('li');
+          item.textContent = 'text';
+          parent.appendChild(item);;
+        };      
+};
+            
+appendElem(parent, 'text');
+
+
+
+</script>
+</body>
+</html>

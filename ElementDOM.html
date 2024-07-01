@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color {
+            color: green;
+            }
+        .color2 {
+            color: blue;
+}
+    </style>
+</head>
+<body>
+    
+    <p class ="color"></p>
+    <p class ="color2"></p>
+
+
+    Сделайте функцию setValue, которая первым параметром будет принимать ссылку на инпут, а вторым - текст. Сделайте так, чтобы данная функция устанавливала переданный текст в value инпута.
+<input>
+
+Даны 4 инпута. В первый инпут вводится ФИО через пробел. По потери фокуса запишите фамилию, имя и отчество в остальные 3 инпута.
+Ivanov Ivan Ivanovich
+    
+    <input>
+    <input>
+    <input>
+    <input>
+
+
+    Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так, чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически стали записанными с большой буквы (в этом же инпуте).
+    <input id = "BigLetter" type = "text">
+
+    Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.
+    <input id = "lengthInput">
+
+    Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в формате 2016-12-31.
+    <input id = "rewerseDate">
+
+    Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).
+    <input id = "checkWord">
+    
+    Дан инпут. В него вводится число. Проверьте по потери фокуса, что это число содержит внутри себя цифру 3.
+    <input id = "check3">
+
+    Даны несколько абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый номер.
+    <p> text </p>
+    <p> text </p>
+    <p> text </p>
+    <p> text </p>
+      
+    <button> CLICK </button>
+
+    Даны ссылки. Добавьте в конец каждой ссылки ее href в круглых скобках.
+    Даны ссылки. Если ссылка начинается с http://, то добавьте ей в конец стрелку → 
+    <a target="_blank" href="www.dom.com"> dom</a>
+    <br>
+    <a target="_blank" href="http://www.sun.ru"> sun</a>
+    <br>
+    <a target="_blank" href="www.tree.ru"> tree</a>
+
+    Даны несколько абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем находится.
+    <p> 4 </p>
+    <p> 3 </p>
+    <p> 5 </p>
+
+    Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом), который приходится на эту дату.
+
+    <input>
+		<p> </p>
+
+		Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута. Сделайте так, чтобы это значение не могло стать меньше нуля.
+    <input>
+		<button id="plus"> +1 </button>
+    <button id="minus"> -1 </button>
+
+    Дан инпут. Даны абзацы. Пусть в этот инпут записывается суммарное количество нажатий по этим абзацам.
+		<br>
+    <input>
+    <p> click </p>
+    <p> click </p>
+
+    На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста
+    <div>И добавьте троеточие в конец обрезанного текста </div>
+    <div>И добавьте троеточие в конец обрезанного текста </div>
+
+    Дан инпут и кнопка. По нажатию на кнопку сгенерируйте случайную строку из 8-ми символов и запишите в инпут.
+    <input>
+    <button> CLICK </button>
+
+    Дан инпут и кнопка. Пользователь вводит в инпут какую-то строку. По нажатию на кнопку перемешайте введенные символы случайным образом и запишите ее обратно в инпут.
+		<input>
+    <button> click </button>
+
+    Дан инпут, кнопка и абзац. В инпут вводится температура в градусах Фаренгейта. По клику на кнопку выведите в абзац температуру в градусах Цельсия.
+		<input>
+    <button> click </button>
+    <p> </p>
+
+    Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в абзац факториал этого числа.
+		<input>
+    <button> click </button>
+    <p> </p>
+
+<script>
+
+function setText(prop, text) {
+        let elem = document.querySelector(prop);
+        
+        elem.textContent = text;
+      }
+            
+      setText('.color', 'text1');
+      setText('.color2', 'text2');
+
+//Сделайте функцию setValue, которая первым параметром будет принимать ссылку на инпут, а вторым - текст. Сделайте так, чтобы данная функция устанавливала переданный текст в value инпута.
+let elem1 = document.querySelector('input');
+
+function setValue(elem, text){
+     elem.value = text; 
+}
+      
+      setValue(elem1, 'text')
+
+     // Даны 4 инпута. В первый инпут вводится ФИО через пробел. По потери фокуса запишите фамилию, имя и отчество в остальные 3 инпута.
+
+     ;(function() {
+      let inputs = document.querySelectorAll('input');
+
+      function splitFio () {
+        let arr = inputs[0].value.split(' ');
+        inputs[1].value = arr[0];
+        inputs[2].value = arr[1];
+        inputs[3].value = arr[2];
+       }
+      
+      inputs[0].addEventListener('blur', splitFio);
+    })();
+
+    //Дан инпут. В него вводится ФИО через пробел. ФИО вводится с маленькой буквы. Сделайте так, чтобы по потери фокуса инпутом, введенные фамилия, имя и отчество автоматически стали записанными с большой буквы (в этом же инпуте).
+
+    ;(function(){
+       
+       let input = document.getElementById('BigLetter') 
+       
+       function fBig(str){
+        let letter = str.split('');
+        letter[0] = letter[0].toUpperCase();
+        return letter.join('');
+        }
+       
+       function toUpperCaseDone(){
+         let arr = input.value.split(' ');
+         for (let i = 0; i < arr.length; i++) {
+         		arr[i] = fBig(arr[i]);
+          }
+          input.value = arr.join(' ');
+       }
+       
+       input.addEventListener('blur', toUpperCaseDone);
+       
+     })();
+    
+    // Дан инпут. В него вводится текст. По потери фокуса узнайте количество слов в этом тексте.
+   
+     ;(function(){
+       
+       let input = document.getElementById('lengthInput') 
+       
+       function lengthDone(){
+         let arr = input.value.split(' ');
+       
+         input.value = arr.length;
+       }
+       
+       input.addEventListener('blur', lengthDone);
+       
+     })();
+
+     //Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса в этом же инпуте поставьте эту дату в формате 2016-12-31.
+
+     ;(function(){
+       
+       let input = document.getElementById('rewerseDate') 
+       
+       function changeDate(){
+         
+         let arr = input.value.split('.');
+         arr.reverse();
+         input.value = arr.join('-');
+       }
+       
+       input.addEventListener('blur', changeDate);
+       
+     })();
+
+// Дан инпут. В него вводится слово. По нажатию на кнопку проверьте то, что это слово читается с начала и с конца одинаково (например, мадам).
+
+;(function(){
+       
+       let input = document.getElementById('checkWord');
+       
+       function changeDate(){
+         
+         let str = input.value.split('');
+         str.reverse();
+         let newStr = str.join('');
+         
+         if (input.value == newStr) {
+            console.log('true')           
+         } else {
+           console.log('false')
+         }
+
+       }
+       
+       input.addEventListener('click', changeDate);
+       
+     })();
+
+     //Дан инпут. В него вводится число. Проверьте по потери фокуса, что это число содержит внутри себя цифру 3.
+
+     ;(function(){
+       
+       let input = document.querySelector('input') 
+       
+       function checkNumber(){
+         
+         let arr = input.value.split('');
+          
+         for (let i = 0; i <= arr.length; i++) {
+           if (arr[i] == 3){
+             console.log('true');
+             return
+           } 
+         }
+         console.log('false');
+         return
+
+       }
+       
+       input.addEventListener('blur', checkNumber);
+       
+     })();
+
+
+// Даны несколько абзацев и кнопка. По нажатию на кнопку запишите в конец каждого абзаца его порядковый номер.
+
+;(function(){
+       
+       let texts = document.querySelectorAll('p'); 
+       let btn = document.querySelector('button'); 
+       
+       function addNumber(){
+                      
+       for (let i = 0; i <= texts.length; i++) {
+      
+            texts[i].innerHTML += [i + 1];
+         };
+       };
+       
+       btn.addEventListener('click', addNumber);
+       
+     })();
+
+// Даны ссылки. Добавьте в конец каждой ссылки ее href в круглых скобках.
+//Даны ссылки. Если ссылка начинается с http://, то добавьте ей в конец стрелку → 
+
+;(function(){
+
+  let links = document.querySelectorAll('a');
+      
+      function addHref () {
+      for (let i = 0; i < links.length; i++) {
+        links[i].innerHTML = links[i].textContent + '('+ links[i].href+')';
+       
+        if (links[i].href.indexOf('http://') === 0){
+          let arrow = '→';
+          links[i].append(arrow);
+        }
+       }};
+      
+      addHref();
+
+})();
+
+
+// Даны несколько абзацев с числами. По нажатию на любой абзац запишите в него квадрат числа, которое в нем находится.
+
+;(function() {
+
+  let elems = document.querySelectorAll('p');
+    
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].addEventListener('click', getSquare);
+   }
+   
+ function getSquare() {
+ this.innerHTML = this.innerHTML ** 2;  
+ }
+
+})();
+
+
+//Дан инпут. В него вводится дата в формате 31.12.2016. По потери фокуса узнайте день недели (словом), который приходится на эту дату.
+
+;(function() {
+
+  let inp = document.querySelector('input');
+      let textDay = document.querySelector('p');
+      
+      inp.addEventListener('blur', function(){
+        
+        let arr = inp.value.split('.');
+        let arr2 = arr.reverse();
+        let str = arr2.join(',')
+        let date = new Date(str);
+        let day = date.getDay();
+        
+        let days = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+        textDay.innerHTML = days[day];
+      })
+
+})();
+
+//Дан инпут. Реализуйте кнопочки +1, -1, которые будут увеличивать или уменьшать на 1 значение инпута. Сделайте так, чтобы это значение не могло стать меньше нуля.
+
+;(function() {
+
+  let inp = document.querySelector('input');
+      let plus = document.querySelector('#plus');
+      let minus = document.querySelector('#minus');
+      
+      plus.addEventListener('click', function() {
+       inp.value++;
+      });
+      
+      minus.addEventListener('click', function minNum() {
+        if (inp.value > 0) {
+         inp.value--;
+        } else (
+          minus.removeEventLisner('click', minNum) 
+        )
+      });
+})();
+
+
+// Дан инпут. Даны абзацы. Пусть в этот инпут записывается суммарное количество нажатий по этим абзацам.
+
+;(function(){
+
+  let inp = document.querySelector('input');
+      let p = document.querySelectorAll('p');
+      
+      for (let i = 0; i < p.length; i++){
+        
+        let sum = 0;
+        p[i].addEventListener('click', function(){
+          sum++;
+          inp.value = sum;
+      });
+      };
+})();
+
+// На странице есть дивы. В них есть текст. Обойдите все дивы и обрежьте тот текст, который в них стоит так, чтобы он стал длиной 10 символов. И добавьте троеточие в конец обрезанного текста
+
+;(function(){
+
+  let div = document.querySelectorAll('div');
+  let str = '';
+      
+      for (let i = 0; i < div.length; i++) {
+  
+        str = div[i].innerHTML.slice(0, 10) + '...';
+        div[i].innerHTML = str;
+      };
+  
+})();
+     
+
+// Дан инпут и кнопка. По нажатию на кнопку сгенерируйте случайную строку из 8-ми символов и запишите в инпут.
+
+;(function(){
+
+  let inp = document.querySelector('input');
+    let btn = document.querySelector('button');
+      
+   btn.addEventListener('click', addStr);
+      
+      function addStr(){
+        let str = '';  
+        let alf = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+-/*=';
+        
+       for (let i = 0; i < 8; i++){
+        str += alf[strRandom(0, alf.length - 1)] 
+       }
+        return inp.value = str;
+      };
+      
+      function strRandom(min, max) {
+        return Math.floor(Math.random() * max - min + 1) + min;
+      };
+})();
+
+;(function() {
+
+  let inp = document.querySelector('input');
+      let btn = document.querySelector('button');
+      
+      btn.addEventListener('click', returnNewStr);
+      
+      function returnNewStr () {
+        let arr = inp.value.split('');
+        let str = '';
+
+	        for(let i = arr.length - 1; i > 0; i--){
+            let j = Math.floor(Math.random()*(i + 1));
+             [arr[i], arr[j]] = [arr[j], arr[i]];
+             str = arr.join('');
+          }
+          return inp.value = str;
+      };
+})();
+
+//Дан инпут, кнопка и абзац. В инпут вводится температура в градусах Фаренгейта. По клику на кнопку выведите в абзац температуру в градусах Цельсия.
+;(function(){
+
+  let inp = document.querySelector('input');
+      let p = document.querySelector('p');
+      let btn = document.querySelector('button');
+      
+      btn.addEventListener('click', changeTemp);
+      
+        function changeTemp(){
+          p.textContent = ((Number(inp.value) - 32) * 5 / 9).toFixed(2); 
+        };
+})();
+
+//    Дан инпут, кнопка и абзац. В инпут вводится число. По нажатию на кнопку выведите в абзац факториал этого числа.
+;(function(){
+
+  let inp = document.querySelector('input');
+  let p = document.querySelector('p');
+  let btn = document.querySelector('button');
+      
+  btn.addEventListener('click', showFactorial);
+      
+    function showFactorial(){
+      let n = Number(inp.value);
+      let res = 1;
+      for (let i = 1; i <= n; i++){
+        res *= i;
+     }   
+      return p.textContent = res;
+    };
+})();
+
+
+     
+</script>
+
+</body>
+</html>

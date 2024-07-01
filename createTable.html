@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="elem">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+
+    по клику на абзац к его содержимому прибавлялась единица.
+		<div id="parent"></div>
+
+    Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li.
+    Модифицируйте предыдущую задачу так, чтобы по клику на любой из вставленных элементов на экран выводился текст этого элемента.
+    Модифицируйте предыдущую задачу так, чтобы по клику на li ей в конец добавлялся '!'.
+    Модифицируйте предыдущую задачу так, чтобы по повторное нажатие на li не приводило к добавлению второго '!'.
+
+    <ul id="list"></ul>
+
+    <table id="table"></table>
+
+    Реализуйте генератор таблиц, ширина и высота таблиц задается в двух инпутах 
+    <input id = "row" placeholder = "Введите число строк">
+    <input id = "col" placeholder = "Введите число столбцов">
+    <button id = "createTable"> Создать таблицу</button>
+    <button id = "deleteTable"> Удалить таблицу</button>
+
+    счетчик ячеек
+    <table id="table2"></table>
+
+    таблица из массива
+    <table id="table3"></table>
+
+    таблица из массива объектов
+    <table id="table4"></table>
+    <script>
+
+;(function () {
+  
+        let div = document.querySelector('#elem');
+      
+		function createTable(rows, cols) {
+	let table = document.createElement('table');
+let tBody = document.createElement('tbody');
+
+	for (let i = 1; i <= 3; i++) {
+       rows = document.createElement('tr');
+		for (let k = 1; k <= 3; k++) {
+			cols = document.createElement('td');
+      const cellText = document.createTextNode(`cell in row ${i}, column ${k}`);
+      cols.appendChild(cellText)
+      rows.appendChild(cols);
+		}
+    tBody.appendChild(rows);
+	}
+	
+	table.appendChild(tBody);
+      
+      table.setAttribute("border", "2")
+      return table;
+}
+      
+div.appendChild(createTable());
+})();
+
+//по клику на абзац к его содержимому прибавлялась единица.
+;(function () {
+  
+  let parent = document.querySelector('#parent');
+
+let arr = [1, 2, 3, 4, 5];
+
+for (let elem of arr) {
+	let p = document.createElement('p');
+	p.textContent = elem;
+	
+	parent.appendChild(p);
+  
+  p.addEventListener('click', function(){
+    let sum =Number(this.textContent) + 1;
+  return p.textContent = sum; 
+  })
+};
+
+})();
+
+    //Дан массив. Вставьте элементы этого массива в конец ul так, чтобы каждый элемент стоял в своем li.
+    //Модифицируйте предыдущую задачу так, чтобы по клику на любой из вставленных элементов на экран выводился текст этого элемента.
+    //Модифицируйте предыдущую задачу так, чтобы по клику на li ей в конец добавлялся '!'.
+    //Модифицируйте предыдущую задачу так, чтобы по повторное нажатие на li не приводило к добавлению второго '!'.
+
+;(function () {
+  
+  let parent = document.querySelector('#list');
+  let arr = [1, 2, 3, 4, 5];
+
+    for (let elem of arr) {
+      let li = document.createElement('li');
+      li.textContent = elem;
+      
+      parent.appendChild(li);
+      
+    li.addEventListener('click', function showText(){
+        alert(li.textContent);
+      });
+      
+      li.addEventListener('click', function addSign(){
+        li.textContent += '!';
+        li.removeEventListener('click', addSign);
+      });
+    };
+})();
+
+;(function () {
+  
+  let table = document.querySelector('#table');
+
+  for (let i = 0; i < 10; i++) {
+    let tr = document.createElement('tr');
+    
+    for (let i = 0; i < 5; i++) {
+      let td = document.createElement('td');
+      const cellText = document.createTextNode(`text`);
+        td.appendChild(cellText);
+      td.style.padding = '5px';
+      tr.appendChild(td);
+    };
+    
+    table.appendChild(tr);
+    table.setAttribute("border", "2");
+  };
+})();
+
+//Реализуйте генератор таблиц, ширина и высота таблиц задается в двух инпутах 
+;(function () {
+  
+  let inpTR = document.getElementById('row');
+      let inpTD = document.getElementById('col');
+      let create_btn = document.getElementById('createTable');
+      let delete_btn = document.getElementById('deleteTable');
+      let body = document.body;
+      let table = document.createElement('table');
+    
+      create_btn.addEventListener('click', createTable);
+      delete_btn.addEventListener('click', deleteTable);
+      
+      function createTable(){
+        let numberTR = Number(inpTR.value);
+        let numberTD = Number(inpTD.value);
+        
+        for (let i = 0; i < numberTR; i++){
+          let tr = document.createElement('tr');
+          
+         for (let k = 0; k < numberTD; k++){
+          let td = document.createElement('td');
+            const cellText = document.createTextNode(`text`);
+            td.appendChild(cellText);
+            td.style.padding = '5px';
+            tr.appendChild(td);
+        };
+          table.appendChild(tr);
+          table.setAttribute("border", "2");
+          body.appendChild(table)
+        };
+      };
+
+      function deleteTable(){
+       table.remove();
+    };
+})();
+
+//счетчик ячеек
+;(function () {
+  let table = document.querySelector('#table2');
+
+let k = 2; // начальное значение счетчика
+for (let i = 0; i < 5; i++) {
+	let tr = document.createElement('tr');
+	
+	for (let i = 0; i < 5; i++) {
+		let td = document.createElement('td');
+		
+    if (k <= 50 && k % 2 === 0) {
+    td.textContent = k; 
+     k += 2;
+    }
+		
+		tr.appendChild(td);
+	}
+	
+	table.appendChild(tr);
+};
+})();
+
+// таблица из массива
+;(function () {
+  let arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];
+let table = document.querySelector('#table3');
+
+ for (let subArr of arr) {
+	let tr = document.createElement('tr');
+	
+	for (let elem of subArr) {
+		let td = document.createElement('td');
+		td.textContent = elem;
+		tr.appendChild(td);
+	}
+	
+	table.appendChild(tr);
+}
+})();
+
+// таблица из массива объектов
+;(function () {
+  let employees = [
+	{name: 'employee1', age: 30, salary: 400},
+	{name: 'employee2', age: 31, salary: 500},
+	{name: 'employee3', age: 32, salary: 600},
+];
+let table = document.getElementById('table4');
+
+for (let employer of employees) {
+	let tr = document.createElement('tr');
+	
+	let td1 = document.createElement('td');
+	td1.textContent = employer.name;
+	tr.appendChild(td1);
+	
+	let td2 = document.createElement('td');
+	td2.textContent = employer.age;
+	tr.appendChild(td2);
+  td2.addEventListener('click', function() {   //прибавить 1 к возрасту
+    td2.textContent = Number(td2.textContent) + 1;
+  })
+	
+	let td3 = document.createElement('td');
+	td3.textContent = employer.salary;
+	tr.appendChild(td3);
+  td3.addEventListener('click', function() { // прибавить 10 процентов к ЗП
+    td3.textContent = Math.floor(Number(td3.textContent) * 1.1);
+  }) 
+	
+	table.appendChild(tr);
+}
+})();
+
+
+		</script>
+</body>
+</html>
